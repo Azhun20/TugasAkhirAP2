@@ -14,7 +14,7 @@ class Login extends BaseController
             }elseif(session()->get('level')== 'dosen'){
                 return redirect()->to(base_url('Dosen'));
             }elseif(session()->get('level') == 'mahasiswa'){
-                return redirect()->to(base_url('Mahasiswa'));
+                return redirect()->to(base_url('Homepage'));
             }
         }
         return view('login_view');
@@ -39,7 +39,7 @@ class Login extends BaseController
                 if($level == 'admin'){
                     return redirect()->to(base_url('Admin'));
                 }else if($level == 'mahasiswa'){
-                    return view('login_view');
+                    return redirect()->to(base_url('Homepage'));
                 }else if($level == 'dosen'){
                     return redirect()->to(base_url('Dosen'));
                 }else {

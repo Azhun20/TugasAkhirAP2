@@ -1,0 +1,24 @@
+body {
+  background: linear-gradient(160deg, #00aba9, #000);
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  height: 100vh;
+  width: 100%;
+}
+.btn {
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+}
+.card {
+  background-color: rgba(124, 124, 124, 0.603);
+  border: none;
+  border-radius: 15px;
+}
+.form-control {
+  border-radius: 10px;
+}
+.pilih {
+  border-radius: 5px;
+}

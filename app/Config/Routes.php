@@ -41,6 +41,13 @@ $routes->post('/register/process', 'Register::process');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/process', 'Login::process');
 $routes->get('/logout', 'Login::logout');
+$routes->get('/homepage', 'Homepage::index');
+$routes->get('/event', 'Event::index');
+$routes->get('/premium', 'Premium::index');
+$routes->get('/booking', 'Homepage::booking');
+$routes->get('/bayar', 'Bayar::index');
+$routes->get('/landingpage', 'Landing::index');
+
 
 
 /*

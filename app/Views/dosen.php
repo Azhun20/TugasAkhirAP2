@@ -74,7 +74,7 @@
                     
                 </table>
                 <?= $pager->links() ?>
-            <form   form method="get" action="<?= base_url(); ?>/logout">  
+            <form  method="get" action="<?= base_url(); ?>/logout">               
         <div class="a-grid">
          <button class="btn btn-danger btn-login text-uppercase fw-bold" type="submit">Log Out</button>
     </div> 
