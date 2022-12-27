@@ -41,7 +41,7 @@
                     <a class="nav-link active mx-2" aria-current="page" href="<?= base_url('event') ?>">Event</a>
                 </div>
                 <div class="me-3">
-                        <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger">Logout</button></form>
+                        <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger btn">Logout</button></form>
                 </div>
             </div>
         </div>
@@ -60,19 +60,19 @@
                     </div>
                     <div class="row my-3">
                         <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
+                            <img src="Asset/img/lipro.jpg" class="card1 mx-4" alt="">
                             <p>Liga Profesional</p>
                         </div>
                         <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
-                            <p>Tournament Futsal SMP</p>
+                            <img src="Asset/img/afc.jpg" class="card1 mx-4" alt="">
+                            <p>Tournament Futsal Internasional</p>
                         </div>
                         <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
+                            <img src="Asset/img/lipel.png" class="card1 mx-4" alt="">
                             <p>Tournament Futsal SMA/SMK</p>
                         </div>
                         <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
+                            <img src="Asset/img/lima.jpg" class="card1 mx-4" alt="">
                             <p>Tournament Futsal LIMA</p>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
             </div>
     </section>
 
-    <!-- Layanan Section -->
+    <!-- Detail Section -->
     <section id="detail">
         <div class="container">
             <div class="row">
@@ -88,59 +88,26 @@
                     <h2>Event</h2>
                     <span class="sub-title">Join Event Terbesar</span>
                 </div>
+                <div>
+                <form action="<?= base_url('/addevent') ?>"><button type="submit" class="btn-warning btn">Buat Event</button></form>
+                </div>
             </div>
             <div class="row mt-5">
+            <?php
+                    foreach ($event as $row) : 
+                        $nama = $row->nm_event;
+                        $gambar = $row->gambar;
+                        ?>
                 <div class="col-md-4 text-center">
                     <div class="card-layanan">
                         <div class="circle-icon position-relative mx-auto">
-                            <img src="<?= base_url('Asset/img/futsal3.jpg') ?>" alt="" class="img-event position-relative mx-auto">
+                            <img src="/Asset/img/<?= $gambar; ?>" alt="" class="img-event position-relative mx-auto">
                         </div>
-                        <h3>Malang</h3>
-                    </div>
+                        <h3><?php echo $nama; ?></h3>                        
+                    </div>                 
                 </div>
-
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="<?= base_url('Asset/img/image6.png') ?>" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3>Bandung</h3>
-
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="<?= base_url('Asset/img/gor.jpeg') ?>" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3>Jakarta</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="<?= base_url('Asset/img/bg7.webp') ?>" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3>Yogyakarta</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="<?= base_url('Asset/img/bg5.jpg') ?>" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3>Solo</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="<?= base_url('Asset/img/bg6.jpg') ?>" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3>Surabaya</h3>
-                    </div>
-                </div>
+                <?php endforeach; ?>
+            </div>
             </div>
         </div>
     </section>

@@ -50,7 +50,7 @@
                         <h4 class="mt-3">Dengan Hanya Rp.5000 /Hari dapatkan potongan Booking hingga 30%
                                         dan buat eventmu lebih keren
                         </h4>
-                        <h3 class="mt-2 text-start">Rp.150.000,-</h3>
+                        <h3 class="mt-2 p-2">Rp.150.000,-</h3>
                         <button type="button" class="btn btn-dark btn-lg">Beli</button>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <h4 class="mt-3">Dapatkan Promo membuat event hingga 40% Dengan Mulai
                                             dari Rp.10.000 /Hari saja
                         </h4>
-                        <h3 class="mt-4 text-start">Rp.300.000,-</h3>
+                        <h3 class="mt-4 p-2">Rp.300.000,-</h3>
                         <button type="button" class="btn btn-dark btn-lg">Beli</button>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                         <h4 class="mt-3">Dapatkan Promo terbaik, tampilkan eventmu teratas
                                             dan Dapatkan layanan prioritas
                         </h4>
-                        <h3 class="mt-4 text-start">Rp.400.000,-</h3>
+                        <h3 class="mt-4 p-2">Rp.400.000,-</h3>
                         <button type="button" class="btn btn-dark btn-lg">Beli</button>
                     </div>
                 </div>

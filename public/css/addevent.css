@@ -140,3 +140,7 @@ h2 {
   font-size: 12px;
   transition: all 0.3s ease-in;
 }
+/* form */
+.btn-primary {
+  visibility: hidden;
+}

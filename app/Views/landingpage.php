@@ -39,7 +39,7 @@
                 </div>
                 
                     <div class="me-3">
-                        <form action="<?= base_url('/regis') ?>"><button type="submit" class="button-primary">Daftar</button></form>
+                        <form action="<?= base_url('/register') ?>"><button type="submit" class="button-primary">Daftar</button></form>
                     </div>
                     <div>
                         <form action="<?= base_url('/login')?>">
@@ -62,7 +62,10 @@
                     </h1>
                     <p>Bugarkan diri dengan berolahraga</p>
                     <p class="fw-bold">Cari Kotamu</p>
-                    <button type="button" class="btn btn-dark btn-lg">Daftar Sekarang</button>
+                    <div>
+                        <form action="<?= base_url('/register') ?>">
+                    <button type="submit" class="btn btn-dark btn-lg">Daftar Sekarang</button></form>
+                    </div>
                 </div>
             </div>
             <!-- <img src="Asset/img/futsal.svg" alt="" class="im1 position-absolute end-0 bottom-0"> -->
