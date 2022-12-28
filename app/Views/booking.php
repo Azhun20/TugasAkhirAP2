@@ -7,94 +7,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="<?= base_url('Asset/img/icon.png') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/event.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/booking.css') ?>">
     <!-- <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
     <title>Booking</title>
 </head>
+<?php
+    // $jam = array('08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00' );
+    
+    
+    for ($i=8; $i < 23 ; $i++) {
+        $list_jam[] = $i;
+    }
+    // $jam = array($i+':00');
+    foreach ($booking as $key) :
+        $mulai = $key->mulai;
+        $selesai = $key->selesai;
+        
+        $lama = $selesai - $mulai;
+        for ($i= 0; $i < $lama; $i++) {
+            $mulai_tersedia = $mulai;
+            unset($list_jam[array_search($mulai_tersedia, $list_jam)]);
+
+            $mulai_tersedia  += 1;
+
+        }
+    endforeach;
+    $selesai_tersedia = 10;
+    for ($i=0; $i < 1 ; $i++) { 
+        $selesai_tersedia += 1;
+        $list_selesai[] = $selesai_tersedia;
+    }
+    
+    // $jamtersedia.add
+    
+?>
 
 <body>
+<?= form_open('/booking'.$row->id_lap) ?>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100">
+        <div class="container">
+            <img class="icn" src="<?= base_url('Asset/img/icon.png') ?>" alt="" width="30">
+            <a class="navbar-brand ms-3" href="#">Futtosaru</a>
 
-    <section id="hero">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-md-6 hero-tagline my-auto mx-auto">
-                    <h1>Hai Kamu, Mau Tau event Didekatmu?</h1>
-                    <div class="btnSearch mx-auto">
-                        <input type="text" class="search bg-light ps-4" placeholder="Kota Malang" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="row my-3">
-                        <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
-                            <p>Liga Profesional</p>
-                        </div>
-                        <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
-                            <p>Tournament Futsal SMP</p>
-                        </div>
-                        <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
-                            <p>Tournament Futsal SMA/SMK</p>
-                        </div>
-                        <div class="col">
-                            <img src="Asset/img/bg5.jpg" class="card1 mx-4" alt="">
-                            <p>Tournament Futsal LIMA</p>
-                        </div>
-                    </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-link active mx-2" href="<?= base_url('homepage') ?>">Home</a>
+                    <a class="nav-link mx-2" aria-current="page" href="<?= base_url('premium') ?>">Premium</a>
+                    <a class="nav-link mx-2" href="<?= base_url('event') ?>">Event</a>
                 </div>
+                <div class="me-3">
+                        <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger btn">Logout</button></form>
+                    </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="hero">
+    <img src="Asset/img/bg6.jpg" class="gambar1 vh-100" alt="">
+        <div class="container h-100">
+            <div class="row tag1 h-100">
+            <div class="row mt-5">
+
+                <div class="col-md-4 text-center">
+                    <div class="card-layanan">
+                        <div class="circle-icon position-relative mx-auto">
+                            <img src="/Asset/img/bg2.jpg" alt="" class="img-event position-relative mx-auto">
+                        </div>
+                        <h3>Lapangan 1</h3>
+                        <p>Lapangan Besar</p> 
+                        <p>Rp.150.000,-</p>                       
+                    </div>                 
+                </div>
+            </div>
+        </div>
             </div>
     </section>
-
-    <!-- Layanan Section -->
+    
+    <!-- Detail Section -->
     <section id="detail">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
+        <div class="row">   
+        <div class="col-12 text-center">
                     <h2>Booking</h2>
-                    <span class="sub-title">Booking dengan mudah</span>
+                    <span class="sub-title">Booking</span>
                 </div>
-            </div>
-            <form>
+            <div class="col-sm-12 col-md-12 col-lg-9 my-auto mx-auto mt-5 text-dark">
+        <div class="card border-0 shadow rounded-3 ">
+            
+          <div class="card-body p-sm-5">              
+            <form method="post" action="">
                 <div class="mb-3">
-                    <label for="Email1" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="@gmail.com">
+                    <div class="col-md-5">
+                    <label for="inputState" class="form-label">Pilih Lapangan</label>
+                    <select id="inputState" class="form-select">
+                    <option selected>Lapangan 1</option>
+                    
+                    <option>Lapangan 2</option>
+                    <option>Lapangan 3</option>
+                    </select>
                 </div>
-                <div class="mb-3">
-                    <label for="noRek" class="form-label">No HP</label>
-                    <input type="number" class="form-control" id="password" placeholder="1300**">
                 </div>
+                <div class="dropdown mb-3">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Hari</label>
-                    <div class="dropdown">
-                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hari
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Senin</a></li>
-                            <li><a class="dropdown-item" href="#">Selasa</a></li>
-                            <li><a class="dropdown-item" href="#">Rabu</a></li>
-                            <li><a class="dropdown-item" href="#">Kamis</a></li>
-                            <li><a class="dropdown-item" href="#">Jumat</a></li>
-                            <li><a class="dropdown-item" href="#">Sabtu</a></li>
-                            <li><a class="dropdown-item" href="#">Minggu</a></li>
-                        </ul>
+                    <div class="col-md-5">
+                    <label for="inputState" class="form-label">Jam Main</label>
+                    <select id="inputState" class="form-select">
+                        
+                    <option selected>Jam Main</option>
+                    <?php
+                    foreach ($list_jam as $tersedia) : 
+                        $add = $tersedia+1;
+                        ?>
+                    <option><?= $tersedia, ':00-',$add,':00' ?></option>
+                    <?php endforeach; ?>
+                </select>
+                </div>
+                </div>
+                       
+                <div class="mb-3">
+                    
+                <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col">
+                    <label for="">Jam Mulai</label>
+                        <input type="time" class="form-control" placeholder="Tanggal mulai" aria-label="First name">
                     </div>
-                </div>
-                <label for="ulangpass" class="form-label">Main</label>
-                <div class="dropdown">
-                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Pilih Jam
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">1 Jam</a></li>
-                        <li><a class="dropdown-item" href="#">2 Jam</a></li>
-                        <li><a class="dropdown-item" href="#">3 Jam</a></li>
-                    </ul>
-                </div>
-                <div class="button text-center mt-3">
-                    <button type="submit" class="btn btn-success col-md-6">Bayar</button>
-                </div>
+                    <div class="col">
+                    <label for="">Jam Selesai</label>
+                        <input type="time" class="form-control" placeholder="Last name" aria-label="Last name">
+                    </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Total Pembayaran</label>
+                        <input type="text">
+                    </div>
+                    <div class="d-grid">
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Buat</button>
+              </div> 
+              <hr class="my-1">
             </form>
+          </div>
         </div>
+      </div>
+      </div>
         </div>
     </section>
 
@@ -150,12 +211,9 @@
         </div>
     </footer>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Java Script -->
     <script src="<?= base_url('js/style.js') ?>"></script>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 
 
 </body>

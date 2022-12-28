@@ -20,8 +20,14 @@ class Homepage extends BaseController
         $lapangan['pager'] = $lapanganModel->pager;
         echo view('dashboard', $lapangan);
     }
-    public function booking()
+    public function booking($id_lap)
     {
-        return view('booking');
+        $BookingModel = new \App\Models\BookingModel();
+        $booking['booking'] = $BookingModel->find($id_lap);
+        // $lap = $BookingModel->orderBy('iddtl','ASC');
+        echo view('booking', $booking);
+    }
+    public function procbooking(){
+
     }
 }

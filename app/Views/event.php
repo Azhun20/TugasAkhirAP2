@@ -88,9 +88,6 @@
                     <h2>Event</h2>
                     <span class="sub-title">Join Event Terbesar</span>
                 </div>
-                <div>
-                <form action="<?= base_url('/addevent') ?>"><button type="submit" class="btn-warning btn">Buat Event</button></form>
-                </div>
             </div>
             <div class="row mt-5">
             <?php

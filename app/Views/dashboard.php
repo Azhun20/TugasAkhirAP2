@@ -36,12 +36,12 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero">
+    <div id="hero">
     <img src="Asset/img/background.jpg" class="gambar1 vh-100" alt="">
         <div class="container h-100">    
             <div class="row tag1 h-100">
                 <div class="col-md-6 hero-tagline my-auto mx-auto">
-                    <h1>Hai Kamu, Mau Futsal Dimananih?</h1>
+                    <h1>Hai <?= session()->get('name'); ?>, Mau Futsal Dimananih?</h1>
                     <div class="btnSearch mx-auto">
                         <input type="text" class="search bg-light ps-4" placeholder="Kota Malang" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
@@ -69,9 +69,9 @@
                     </div>
                 </div>
             </div>
-    </section>
+</div>
 
-    <section id="detail">
+    <div id="detail">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
@@ -79,6 +79,7 @@
                     <span class="sub-title">Pilih Lapangan Terbaikmu</span>
                 </div>
             </div>
+            
             <div class="row mt-5">
             <?php
                     foreach ($dashboard as $row) : 
@@ -86,18 +87,21 @@
                         $gambar = $row->image;
                         ?>
                 <div class="col-md-4 text-center">
-                    <div class="card-layanan">
+                <form href="http://localhost:8080/booking/<?=$row->id_lap;?>">    
+                    <button type="submit" class="card-layanan">
                         <div class="circle-icon position-relative mx-auto">
                             <img src="/Asset/img/<?= $gambar; ?>" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3><?php echo $nama; ?></h3>                        
-                    </div>                 
+                        
+                        <input type="hidden">    
+                    </div>
+                        <h3><?php echo $nama; ?></h3>             
+                    </button> 
+                    </form>                  
                 </div>
                 <?php endforeach; ?>
             </div>
-            
         </div>
-    </section>
+    </div>
 
     <!-- footer -->
     <footer class="footer text-white pt-5 pb-4 bg-dark">
