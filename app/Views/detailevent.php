@@ -9,7 +9,7 @@
     <link rel="icon" href="<?= base_url('Asset/img/icon.png') ?>">
     <link rel="stylesheet" href="<?= base_url('css/addevent.css') ?>">
     <!-- <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
-    <title>Premium</title>
+    <title>Event</title>
 </head>
 
 <body>
@@ -36,12 +36,30 @@
     </nav>
     <!-- Hero Section -->
     <section id="hero">
-    <img src="Asset/img/bg6.jpg" class="gambar1 vh-100" alt="">
         <div class="container h-100">
-            <div class="row tag1 h-100">
-        </div>
+        <div class="row h-100 ">
+            <div class="col my-auto">
+                <div class="col">
+                <img class="tag1" src="/Asset/img/<?=$event->gambar?>" alt="">
+                </div>
+                <div class="col text-light mt-4">
+                    <h4>Tanggal Mulai   : <?=$event->tgl_mulai?></h4>
+                    <h4>Tanggal Selesai : <?=$event->tgl_selesai?></h4>
+                </div>
+            
             </div>
+                <div class="col text-light my-auto">
+                <h2 class="text-center align-top"><?=$event->Kota?></h2>
+                    <div class="col col2 text-left">
+                        <h1 class="align-top"><?=$event->nm_event?></h1>  
+                        <p><?=$event->deskripsi?></p>
+                    <h4 class="text-left mt-4"><?=$event->Alamat?></h3> 
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
 
     <!-- Detail Section -->
     <section id="detail">

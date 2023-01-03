@@ -69,9 +69,10 @@
                     </div>
                 </div>
             </div>
-</div>
+        </div>
+    </div>
 
-    <div id="detail">
+    <div class="detail">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
@@ -79,7 +80,6 @@
                     <span class="sub-title">Pilih Lapangan Terbaikmu</span>
                 </div>
             </div>
-            
             <div class="row mt-5">
             <?php
                     foreach ($dashboard as $row) : 
@@ -87,12 +87,10 @@
                         $gambar = $row->image;
                         ?>
                 <div class="col-md-4 text-center">
-                <form href="http://localhost:8080/booking/<?=$row->id_lap;?>">    
+                <form action="http://localhost:8080/homepage/detail/<?=$row->id_lap;?>">    
                     <button type="submit" class="card-layanan">
                         <div class="circle-icon position-relative mx-auto">
-                            <img src="/Asset/img/<?= $gambar; ?>" alt="" class="img-event position-relative mx-auto">
-                        
-                        <input type="hidden">    
+                            <img src="/Asset/img/<?= $gambar; ?>" alt="" class="img-event position-relative mx-auto">  
                     </div>
                         <h3><?php echo $nama; ?></h3>             
                     </button> 

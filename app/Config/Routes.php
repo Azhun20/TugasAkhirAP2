@@ -45,7 +45,6 @@ $routes->get('/homepage', 'Homepage::index');
 $routes->get('/event', 'Event::index');
 $routes->get('/addevent', 'Event::addEvent');
 $routes->get('/premium', 'Premium::index');
-$routes->get('/booking', 'Homepage::booking');
 $routes->get('/bayar', 'Bayar::index');
 $routes->get('/landingpage', 'Landing::index');
 

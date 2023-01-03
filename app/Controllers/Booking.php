@@ -2,10 +2,12 @@
 
 namespace App\Controllers;
 
-class Bayar extends BaseController
+class Booking extends BaseController
 {
-    public function index()
+    public function index($id_dtl)
     {
-        return view('pembayaran');
+        $BookingModel = new \App\Models\BookingModel();
+        $data['info'] = $BookingModel->getData($id_dtl);
+        return view('booking',$data);
     }
 }

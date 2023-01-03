@@ -20,7 +20,9 @@ class Event extends BaseController
         $event['pager'] = $eventModel->pager;
         echo view('event', $event);
     }
-    public function addEvent(){
-        return view('detailevent');
+    public function addEvent($id_event){
+        $eventModel = new \App\Models\EventModel();
+        $event['event'] = $eventModel->find($id_event);
+        return view('detailevent',$event);
     }
 }

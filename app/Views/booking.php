@@ -11,17 +11,18 @@
     <!-- <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
     <title>Booking</title>
 </head>
+
 <?php
-    // $jam = array('08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00' );
-    
-    
-    for ($i=8; $i < 23 ; $i++) {
+    for ($i=8; $i < 22 ; $i++) {
         $list_jam[] = $i;
     }
     // $jam = array($i+':00');
-    foreach ($booking as $key) :
-        $mulai = $key->mulai;
-        $selesai = $key->selesai;
+    
+    foreach($info as $row):
+        $mulai = $row['mulai'];
+        $selesai = $row['selesai'];
+        $lapangan = $row['gambar'];
+        $noLap = $row['No_lap'];
         
         $lama = $selesai - $mulai;
         for ($i= 0; $i < $lama; $i++) {
@@ -32,18 +33,16 @@
 
         }
     endforeach;
-    $selesai_tersedia = 10;
+    
+    $selesai_tersedia = 15;
     for ($i=0; $i < 1 ; $i++) { 
         $selesai_tersedia += 1;
         $list_selesai[] = $selesai_tersedia;
     }
-    
-    // $jamtersedia.add
-    
 ?>
 
 <body>
-<?= form_open('/booking'.$row->id_lap) ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100">
         <div class="container">
@@ -65,27 +64,6 @@
             </div>
         </div>
     </nav>
-    <!-- Hero Section -->
-    <section id="hero">
-    <img src="Asset/img/bg6.jpg" class="gambar1 vh-100" alt="">
-        <div class="container h-100">
-            <div class="row tag1 h-100">
-            <div class="row mt-5">
-
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <div class="circle-icon position-relative mx-auto">
-                            <img src="/Asset/img/bg2.jpg" alt="" class="img-event position-relative mx-auto">
-                        </div>
-                        <h3>Lapangan 1</h3>
-                        <p>Lapangan Besar</p> 
-                        <p>Rp.150.000,-</p>                       
-                    </div>                 
-                </div>
-            </div>
-        </div>
-            </div>
-    </section>
     
     <!-- Detail Section -->
     <section id="detail">
@@ -97,21 +75,10 @@
                 </div>
             <div class="col-sm-12 col-md-12 col-lg-9 my-auto mx-auto mt-5 text-dark">
         <div class="card border-0 shadow rounded-3 ">
-            
+        
           <div class="card-body p-sm-5">              
             <form method="post" action="">
-                <div class="mb-3">
-                    <div class="col-md-5">
-                    <label for="inputState" class="form-label">Pilih Lapangan</label>
-                    <select id="inputState" class="form-select">
-                    <option selected>Lapangan 1</option>
-                    
-                    <option>Lapangan 2</option>
-                    <option>Lapangan 3</option>
-                    </select>
-                </div>
-                </div>
-                <div class="dropdown mb-3">
+                
                 <div class="mb-3">
                     <div class="col-md-5">
                     <label for="inputState" class="form-label">Jam Main</label>

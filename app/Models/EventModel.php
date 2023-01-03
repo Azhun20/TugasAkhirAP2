@@ -18,4 +18,5 @@ class EventModel extends Model
         'gambar' => 'required',
         'deskripsi' => 'required',
         ];
+        
 }

@@ -22,12 +22,23 @@ class Homepage extends BaseController
     }
     public function booking($id_lap)
     {
-        $BookingModel = new \App\Models\BookingModel();
-        $booking['booking'] = $BookingModel->find($id_lap);
-        // $lap = $BookingModel->orderBy('iddtl','ASC');
-        echo view('booking', $booking);
+        $LapanganModel = new \App\Models\DashboardModel();
+        $lapangan['lapangan'] = $LapanganModel->find($id_lap);
+        $detailModel = new \App\Models\LapanganModel();
+        $detail['detail'] = $detailModel->find($id_lap);
+        return view('booking',$lapangan,$detail);
     }
-    public function procbooking(){
 
+    public function detail($id_lap)
+    {
+        $model = new \App\Models\LapanganModel();
+        $data['info'] = $model->getDetail($id_lap);
+        // // $data['info'] = $model->orderBy($id_lap);
+        
+        echo view('detaillap',$data);
     }
+    // public function detail($id_lap) {
+    //     $data['detailnilai'] = $this->LapanganModel->nilaijoin($id_lap);
+    //     $this->load->view('detaillap', $data);
+    // }
 }

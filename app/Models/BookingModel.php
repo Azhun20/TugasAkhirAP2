@@ -16,4 +16,12 @@ class BookingModel extends Model
         'tanggal' => 'required',
         'selesai' => 'required',
         ];
+        public function getData($id_dtl)
+        {
+             return $this->db->table('booking')
+             ->select('*')
+             ->join('dtl_lap','dtl_lap.id_dtl=booking.id_dtl')
+             ->where('dtl_lap.id_dtl',$id_dtl)
+             ->get()->getResultArray();  
+        }
 }
