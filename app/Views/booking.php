@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="<?= base_url('Asset/img/icon.png') ?>">
     <link rel="stylesheet" href="<?= base_url('css/booking.css') ?>">
-    <!-- <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
+
     <title>Booking</title>
 </head>
 
@@ -16,7 +16,8 @@
     for ($i=8; $i < 22 ; $i++) {
         $list_jam[] = $i;
     }
-    // $jam = array($i+':00');
+    $jam = $info[0]['jam'];
+
     
     foreach($info as $row):
         $mulai = $row['mulai'];
@@ -102,18 +103,37 @@
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col">
-                    <label for="">Jam Mulai</label>
-                        <input type="time" class="form-control" placeholder="Tanggal mulai" aria-label="First name">
-                    </div>
-                    <div class="col">
-                    <label for="">Jam Selesai</label>
-                        <input type="time" class="form-control" placeholder="Last name" aria-label="Last name">
-                    </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Total Pembayaran</label>
-                        <input type="text">
-                    </div>
+                        <label for="">Pilih Jam</label>
+                    <div class="wrapper">
+                        <div class="container cn1">
+                        <label class="option_item">
+                            <input type="checkbox" class="checkbox">
+                            <div class="option_inner">
+                                <div class="tickmark"></div>
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z" />
+                                    </svg>
+                                </div>
+                                <p class="mb-2">08:00-09:00</p>
+                                <div class="name">Available</div>
+                            </div>
+                        </label>
+                        <label class="option_item">
+                            <input type="checkbox" class="checkbox" disabled>
+                            <div class="option_inner">
+                                <div class="tickmark"></div>
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z" />
+                                    </svg>
+                                </div>
+                                <p class="mb-2"><?=$jam?></p>
+                                <div class="name text-danger">Not Available</div>
+                            </div>
+                        </label>
+                        </div>
+                        </div>
                     <div class="d-grid">
                 <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Buat</button>
               </div> 
@@ -123,6 +143,16 @@
         </div>
       </div>
       </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container vh-100">
+            <div class="row">
+                <div class="col">
+                        
+                </div>
+            </div>
         </div>
     </section>
 

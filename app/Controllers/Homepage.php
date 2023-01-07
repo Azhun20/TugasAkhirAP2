@@ -33,12 +33,6 @@ class Homepage extends BaseController
     {
         $model = new \App\Models\LapanganModel();
         $data['info'] = $model->getDetail($id_lap);
-        // // $data['info'] = $model->orderBy($id_lap);
-        
         echo view('detaillap',$data);
     }
-    // public function detail($id_lap) {
-    //     $data['detailnilai'] = $this->LapanganModel->nilaijoin($id_lap);
-    //     $this->load->view('detaillap', $data);
-    // }
 }

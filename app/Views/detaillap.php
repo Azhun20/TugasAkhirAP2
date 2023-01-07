@@ -14,6 +14,7 @@
 
 <body>
 
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100">
         <div class="container">
@@ -41,12 +42,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mt-5">
-                    <h2 class="text-light mt-5">SM Malang</h1>
-                    <p class="text-light">Pilih Lapangan Terbaikmu</p>
+                    <h2 class="text-light mt-5"><?=$info[0]['NamaLap']?></h1>
+                    <p class="text-light"><?=$info[0]['Alamat']?></p>
                 </div>
             </div>
             <div class="row mt-5">
             <?php
+           
                 foreach ($info as $row) :
                     $nama = $row['No_lap'];
                     $ukuran = $row['size'];

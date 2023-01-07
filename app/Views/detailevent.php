@@ -142,7 +142,7 @@
                     </div>
                     </div>
                     <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Buat</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Create Event</button>
               </div> 
               <hr class="my-1">
             </form>
