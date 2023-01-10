@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" href="<?= base_url('Asset/img/icon.png') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/addevent.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/myevent.css') ?>">
     <!-- <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
     <title>Event</title>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100">
+    <nav class="navbar navbar-expand-lg navbar-dark  position-fixed w-100">
         <div class="container">
             <img class="icn" src="<?= base_url('Asset/img/icon.png') ?>" alt="" width="30">
             <a class="navbar-brand ms-3" href="#">Futtosaru</a>
@@ -26,7 +26,7 @@
                 <div class="navbar-nav mx-auto">
                     <a class="nav-link mx-2" href="<?= base_url('homepage') ?>">Home</a>
                     <a class="nav-link mx-2" aria-current="page" href="<?= base_url('premium') ?>">Premium</a>
-                    <a class="nav-link active mx-2" href="<?= base_url('event') ?>">Event</a>
+                    <a class="nav-link mx-2" href="<?= base_url('event') ?>">Event</a>
                 </div>
                 <div class="me-3">
                         <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger btn">Logout</button></form>
@@ -34,76 +34,33 @@
             </div>
         </div>
     </nav>
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container h-100">
-        <div class="row h-100 ">
-            <div class="col my-auto">
-                <div class="col">
-                <img class="tag1" src="/Asset/img/<?=$event->gambar?>" alt="">
-                </div>
-                <div class="col text-light mt-4">
-                    <h4>Tanggal Mulai   : <?=$event->tgl_mulai?></h4>
-                    <h4>Tanggal Selesai : <?=$event->tgl_selesai?></h4>
-                </div>
-            
-            </div>
-                <div class="col text-light my-auto">
-                <h2 class="text-center align-top"><?=$event->Kota?></h2>
-                    <div class="col col2 text-left">
-                        <h1 class="align-top"><?=$event->nm_event?></h1>  
-                        <p><?=$event->deskripsi?></p>
-                    <h4 class="text-left mt-4"><?=$event->Alamat?></h3> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Detail Section -->
     <section id="detail">
         <div class="container">
         <div class="row">   
-        <div class="col-12 text-center">
-                    <h2>Create Event</h2>
-                    <span class="sub-title">Buat Eventmu Sendiri</span>
-                </div>
-            <div class="col-sm-12 col-md-12 col-lg-9 my-auto mx-auto mt-5 text-dark">
-            <label class="text-center" for="">List Harga</label>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        GOR
-                        <span class="badge bg-primary rounded-pill">Rp.1.000.000,-/hari</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Vinyl
-                        <span class="badge bg-primary rounded-pill">Rp.500.000,-/hari</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Syntetic
-                        <span class="badge bg-primary rounded-pill">Rp.700.000,-/hari</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Interlock
-                        <span class="badge bg-primary rounded-pill">Rp.400.000,-/hari</span>
-                    </li>
-                    </ul>
+        <h2 class="mt-5">My Event</h2>
         <div class="card border-0 shadow rounded-3 ">
-            
+        <?php if (session()->has('errors')): ?>
+     <ul>
+          <?php foreach(session('errors') as $error): ?>
+                <li><?=$error ?></li>
+          <?php endforeach; ?>
+     </ul>
+ <?php endif ?>
           <div class="card-body p-sm-5">              
-            <form method="post" action="">
+            <form method="post" action="<?=base_url();?>/event/addevent" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Event</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="nmevent">
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="nmevent" required>
                 </div>
                 <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Event</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="nmevent"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" required></textarea>
                 </div>
                 <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label me-3">Pilih Gambar</label>
-                <input class="pilih" type="file" id="formFile" name="gambar">
+                <input class="pilih" type="file" id="formFile" name="gambar" required>
                 </div>
                 <div class="row g-3 mb-3">
                 <div class="col-md-5">
@@ -117,28 +74,19 @@
                     <option value="Kota Yogyakarta">Kota Yogyakarta</option>
                     </select>
                 </div>
-                <div class="col-md-5">
-                    <label for="inputState" class="form-label">Pilih Lapangan</label>
-                    <select id="inputState" class="form-select">
-                    <option value="GOR" selected>GOR</option>
-                    <option value="Vinyl" >Vinyl</option>
-                    <option value="Syntetic" >Syntetic</option>
-                    <option value="Interlock" >Interlock</option>
-                    </select>
-                </div>
                 </div>
                 <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="alamat">
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="alamat" required>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col">
                     <label for="">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tanggal mulai" aria-label="First name" name="tgl_mulai">
+                        <input type="date" class="form-control" placeholder="Tanggal mulai" aria-label="First name" name="tgl_mulai" required>
                     </div>
                     <div class="col">
                     <label for="">Tanggal Selesai</label>
-                        <input type="date" class="form-control" placeholder="Last name" aria-label="Last name" name="tgl_selesai">
+                        <input type="date" class="form-control" placeholder="Last name" aria-label="Last name" name="tgl_selesai" required>
                     </div>
                     </div>
                     <div class="d-grid">

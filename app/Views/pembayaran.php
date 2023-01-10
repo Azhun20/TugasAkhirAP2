@@ -16,42 +16,68 @@
     <h1 class="mt-3 text-light">Futtosaru</h1>
       <div class="col-sm-9 col-md-7 col-lg-5 my-auto mx-auto">
         <div class="card border-0 shadow rounded-3 ">
-          <div class="card-body p-4 p-sm-5">
+          <div class="card-body p-sm-5">
             <h3 class="card-title text-center mb-5 text-light">Form Pembayaran</h3>
-            <form method="post" action="">
+            <?php if (session()->has('errors')): ?>
+     <ul>
+          <?php foreach(session('errors') as $error): ?>
+                <li><?=$error ?></li>
+          <?php endforeach; ?>
+     </ul>
+ <?php endif ?>
+            
+            <form action="<?=base_url();?>/premium/process " method="post" enctype="multipart/form-data">
+              <?php foreach ($info as $row) :
+                  $name= $row['Title'];
+                  $price = $row['harga'];
+                ?>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com">
-                <label for="floatingInput">ID Pembayaran</label>
+                <input type="text" class="form-control" name="jenis" id="jenis" value="<?=$name?>" readonly>
+                <label for="floatingInput">Jenis Pembayaran</label>
               </div>
-              <div class="form-floating mb">
-                <input type="text" class="form-control" name="password" id="password" placeholder="Total Pembayaran">
+              <div class="form-floating">
+                <input type="text" class="form-control" name="total" id="total" value="<?=$price?>" readonly>
                 <label for="floatingPassword">Total Pembayaran</label>
               </div>
-              <label for="formFile" class="btn text-light">Pilih Pembayaran</label>
+              <?php endforeach?>
+              <label for="check" class="btn text-light">Pilih Pembayaran</label>
+              
               <div class="text-light">
-                <div class="form-check form-check-inline ms-3 me-5">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    BANK
-                </label>
-                </div>
-                <div class="form-check form-check-inline ms-3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    E-Wallet
-                </label>
-            </div>
-              </div>
+                  <div class="form-check form-check-inline ms-3 me-5">
+                  <input class="form-check-input" type="radio" value="Bank" name="level" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                      BANK
+                  </label>
+                  </div>
+                  <div class="form-check form-check-inline ms-3">
+                  <input class="form-check-input" type="radio" value="E-Wallet" name="level" id="flexRadioDefault2">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                      E-Wallet
+                  </label>
+                  </div>
+                  <div class="form-check form-check-inline ms-3">
+                  <input class="form-check-input" type="radio" value="Ditempat" name="level" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                      Ditempat
+                  </label>
+                  </div>
+                  <div class="ms-3">
+                  <label class="bank" for="" >Rekening : 1534000300602 Mandiri</label>
+                    <div>
+                    <label class="wallet me-5" for="" >Dana : Futtosaruku </label>
+                    </div>
+                    <label class="wallet" for="" >Tokped : FuttosaruInd</label>
+                  </div>
+                  </div>
               <div class="mb-3">
             <label for="formFile" class="btn text-light">Upload Bukti Pembayaran</label>
-            <input class="pilih text-light ms-2" type="file" id="formFile">
-            </div>
-    
+            <input class="pilih text-light ms-2 " type="file" id="gambar" name="gambar" required>
+          </div>
               <div class="d-grid">
                 <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Kirim</button>
               </div> 
-              <hr class="my-2">
-            </form>
+              </form>
+             
           </div>
         </div>
       </div>

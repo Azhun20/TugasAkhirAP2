@@ -31,6 +31,7 @@
                 <div class="me-3">
                         <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger">Logout</button></form>
                 </div>
+                <form action="<?= base_url('/myevent') ?>"><button type="submit" class="btn-primary">My Event</button></form>
             </div>
         </div>
     </nav>
@@ -83,7 +84,7 @@
                         $gambar = $row->gambar;
                         ?>
                 <div class="col-md-4 text-center">
-                <form action="http://localhost:8080/event/addevent/<?=$row->id_event;?>">    
+                <form action="http://localhost:8080/event/detevent/<?=$row->id_event;?>">    
                     <button type="submit" class="card-layanan">
                         <div class="circle-icon position-relative mx-auto">
                             <img src="/Asset/img/<?= $gambar; ?>" alt="" class="img-event position-relative mx-auto">  

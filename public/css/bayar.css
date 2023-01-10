@@ -2,7 +2,7 @@ body {
   background: linear-gradient(160deg, #00aba9, #000);
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
-  height: 100vh;
+  height: 200%;
   width: 100%;
 }
 .btn {

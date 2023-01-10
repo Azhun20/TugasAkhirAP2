@@ -18,7 +18,7 @@ class BookingModel extends Model
         ];
         public function getData($id_dtl)
         {
-             return $this->db->table('booking','masterjam')
+             return $this->db->table('booking')
              ->select('*')
              ->join('dtl_lap','dtl_lap.id_dtl=booking.id_dtl')
              ->join('masterjam','masterjam.id_jam = booking.id_jam')

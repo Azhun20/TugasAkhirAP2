@@ -12,38 +12,8 @@
     <title>Booking</title>
 </head>
 
-<?php
-    for ($i=8; $i < 22 ; $i++) {
-        $list_jam[] = $i;
-    }
-    $jam = $info[0]['jam'];
-
-    
-    foreach($info as $row):
-        $mulai = $row['mulai'];
-        $selesai = $row['selesai'];
-        $lapangan = $row['gambar'];
-        $noLap = $row['No_lap'];
-        
-        $lama = $selesai - $mulai;
-        for ($i= 0; $i < $lama; $i++) {
-            $mulai_tersedia = $mulai;
-            unset($list_jam[array_search($mulai_tersedia, $list_jam)]);
-
-            $mulai_tersedia  += 1;
-
-        }
-    endforeach;
-    
-    $selesai_tersedia = 15;
-    for ($i=0; $i < 1 ; $i++) { 
-        $selesai_tersedia += 1;
-        $list_selesai[] = $selesai_tersedia;
-    }
-?>
-
 <body>
-
+    
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100">
         <div class="container">
@@ -79,35 +49,44 @@
         
           <div class="card-body p-sm-5">              
             <form method="post" action="">
-                
-                <div class="mb-3">
-                    <div class="col-md-5">
-                    <label for="inputState" class="form-label">Jam Main</label>
-                    <select id="inputState" class="form-select">
-                        
-                    <option selected>Jam Main</option>
-                    <?php
-                    foreach ($list_jam as $tersedia) : 
-                        $add = $tersedia+1;
-                        ?>
-                    <option><?= $tersedia, ':00-',$add,':00' ?></option>
-                    <?php endforeach; ?>
-                </select>
-                </div>
-                </div>
-                       
                 <div class="mb-3">
                     
                 <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
+                <input type="date" class="form-control" id="exampleFormControlInput1" name="tgl">
+                
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col">
                         <label for="">Pilih Jam</label>
                     <div class="wrapper">
                         <div class="container cn1">
-                        <label class="option_item">
-                            <input type="checkbox" class="checkbox">
+
+                        <?php  
+                            foreach ($isi as $row) :
+                                $status = "Avaible";  
+                                $idJamMaster = $row['id_jam'];
+                                $masterJam = $row['jam'];
+                                foreach ($info as $row) :
+                                    $idJamBooking = $row['id_jam'];
+                                    $tgl = $row['tanggal'];
+                                    if($idJamBooking == $idJamMaster):
+                                        $status = "Not Avaible";
+                                    endif;
+                                endforeach;
+                        ?>
+                            <label class="option_item">
+                                
+                            <?php
+                                if($status == "Not Avaible"):
+                                ?>
+                                <input type="checkbox" class="checkbox" disabled>
+                                <?php
+                                else:
+                                ?>
+                                <input type="checkbox" class="checkbox">
+                                <?php
+                                endif
+                                ?>
                             <div class="option_inner">
                                 <div class="tickmark"></div>
                                 <div class="icon">
@@ -115,23 +94,23 @@
                                                             <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z" />
                                     </svg>
                                 </div>
-                                <p class="mb-2">08:00-09:00</p>
-                                <div class="name">Available</div>
-                            </div>
-                        </label>
-                        <label class="option_item">
-                            <input type="checkbox" class="checkbox" disabled>
-                            <div class="option_inner">
-                                <div class="tickmark"></div>
-                                <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z" />
-                                    </svg>
-                                </div>
-                                <p class="mb-2"><?=$jam?></p>
+                                <p class="mb-2"><?=$masterJam?></p>
+                                <?php
+                                if($status == "Not Avaible"):
+                                ?>
                                 <div class="name text-danger">Not Available</div>
+                                <?php
+                                else:
+                                ?>
+                                <div class="name">Available</div>
+                        <?php
+                            endif;
+                            ?>
                             </div>
                         </label>
+                        <?php
+                            endforeach
+                        ?>
                         </div>
                         </div>
                     <div class="d-grid">

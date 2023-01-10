@@ -44,38 +44,23 @@
                 </div>
             </div>
             <div class="row mt-5">
+                <?php foreach ($info as $row) :
+                
+                    $name = $row['Title'];
+                    $desc = $row['desc'];
+                    $price = $row['harga']; ?>
                 <div class="col-md-4 text-center">
                     <div class="card-layanan">
-                        <h3 class="mt4">Beginer</h3>
-                        <h4 class="mt-3">Dengan Hanya Rp.5000 /Hari dapatkan potongan Booking hingga 30%
-                                        dan buat eventmu lebih keren
+                        <h3 class="mt4"><?= $name ?></h3>
+                        <h4 class="mt-3"><?= $desc ?>
                         </h4>
-                        <h3 class="mt-2 p-2">Rp.150.000,-</h3>
-                        <button type="button" class="btn btn-dark btn-lg">Beli</button>
+                        <h3 class="mt-2 p-2"><?= $price ?></h3>
+                        <form action="http://localhost:8080/premium/bayar/<?=$row['idPremium'];?>">
+                        <button type="submit" class="btn btn-dark btn-lg">Beli</button>  
+                        </form>
                     </div>
                 </div>
-
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <h3 class="mt4">Medium</h3>
-                        <h4 class="mt-3">Dapatkan Promo membuat event hingga 40% Dengan Mulai
-                                            dari Rp.10.000 /Hari saja
-                        </h4>
-                        <h3 class="mt-4 p-2">Rp.300.000,-</h3>
-                        <button type="button" class="btn btn-dark btn-lg">Beli</button>
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center">
-                    <div class="card-layanan">
-                        <h3 class="mt4">Profesional</h3>
-                        <h4 class="mt-3">Dapatkan Promo terbaik, tampilkan eventmu teratas
-                                            dan Dapatkan layanan prioritas
-                        </h4>
-                        <h3 class="mt-4 p-2">Rp.400.000,-</h3>
-                        <button type="button" class="btn btn-dark btn-lg">Beli</button>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </section>

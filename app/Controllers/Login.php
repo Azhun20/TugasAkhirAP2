@@ -34,6 +34,7 @@ class Login extends BaseController
                     'email' => $dataUser->email,
                     'name' => $dataUser->name,
                     'level' => $dataUser->level,
+                    'premium' => $dataUser->premium,
                     'logged_in' => TRUE
                 ]);
                 $level = $dataUser->level;
