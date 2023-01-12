@@ -42,7 +42,7 @@ body {
   height: 100vh;
 }
 .gambar1 {
-  filter: brightness(40%);
+  filter: brightness(30%);
   width: 100%;
 }
 #hero .tag1 {

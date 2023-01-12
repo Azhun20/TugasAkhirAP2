@@ -16,9 +16,8 @@ class EventModel extends Model
         'Kota' => 'required',
         'nm_event' => 'required',
         'gambar' => [
-            'rules'=>'uploaded[gambar]|max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+            'rules'=>'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
             'errors'=>[
-                'uploaded'=>'Masukkan bukti pembayaran terlebih dahulu',
                 'max_size'=>'Ukuran gambar terlalu besar',
                 'is_image'=>'Yang anda pilih bukan gambar',
                 'mime_in'=>'Yang anda pilih bukan gambar'
@@ -26,5 +25,10 @@ class EventModel extends Model
         ],
         'deskripsi' => 'required',
         ];
-        
+        public function getID($id_user)
+    {
+         return $this->db->table('event')
+         ->where('event.id',$id_user)
+         ->get()->getResultArray();  
+    }
 }

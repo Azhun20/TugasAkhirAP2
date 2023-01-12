@@ -11,7 +11,6 @@
     <!-- <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
     <title>Event</title>
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark  position-fixed w-100">
@@ -49,24 +48,31 @@
      </ul>
  <?php endif ?>
           <div class="card-body p-sm-5">              
-            <form method="post" action="<?=base_url();?>/event/addevent" enctype="multipart/form-data">
+            <form method="post" action="/event/update/<?=$edit[0]['id_event']?>" enctype="multipart/form-data">
+            <input type="hidden" name="gambarLama" value="<?=$edit[0]['gambar']?>">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Event</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="nmevent" required>
+                <input type="text" class="form-control" value="<?=$edit[0]['nm_event']?>" id="exampleFormControlInput1" name="nmevent" required>
                 </div>
                 <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Event</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" required></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" required><?=$edit[0]['deskripsi']?></textarea>
                 </div>
                 <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label me-3">Pilih Gambar</label>
-                <input class="pilih" type="file" id="formFile" name="gambar" required>
+                    <img src="/Asset/img/<?=$edit[0]['gambar']?>" class="img-preview" alt="">
+                <div class="col-sm-8">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="gambar" name="gambar">
+                        <label class="custom-file-label" for="gambar">Pilih gambar...</label>
+                    </div>
+                </div>
                 </div>
                 <div class="row g-3 mb-3">
                 <div class="col-md-5">
                     <label for="inputState" class="form-label">Kota</label>
                     <select id="inputState" class="form-select" name="kota">
-                    <option value="Kota Malang" selected>Kota Malang</option>
+                    <option value="<?=$edit[0]['Kota']?>" selected><?=$edit[0]['Kota']?></option>
+                    <option value="Kota Malang">Kota Malang</option>
                     <option value="Kota Jakarta">Kota Jakarta</option>
                     <option value="Kota Surabaya">Kota Surabaya</option>
                     <option value="Kota Bandung">Kota Bandung</option>
@@ -77,16 +83,16 @@
                 </div>
                 <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="alamat" required>
+                <input type="text" class="form-control" id="exampleFormControlInput1" value="<?=$edit[0]['Alamat']?>" name="alamat" required>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col">
                     <label for="">Tanggal Mulai</label>
-                        <input type="date" class="form-control" placeholder="Tanggal mulai" aria-label="First name" name="tgl_mulai" required>
+                        <input type="date" class="form-control" placeholder="Tanggal mulai" aria-label="First name"value="<?=$edit[0]['tgl_mulai']?>" name="tgl_mulai" required>
                     </div>
                     <div class="col">
                     <label for="">Tanggal Selesai</label>
-                        <input type="date" class="form-control" placeholder="Last name" aria-label="Last name" name="tgl_selesai" required>
+                        <input type="date" class="form-control" placeholder="Last name" aria-label="Last name" value="<?=$edit[0]['tgl_selesai']?>" name="tgl_selesai" required>
                     </div>
                     </div>
                     <div class="d-grid">
@@ -169,7 +175,23 @@
     <!-- Java Script -->
     <script src="<?= base_url('js/style.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script> 
+    function previewImg(){
+        const img = document.querySelector('#gambar');
+        const labelImg = document.querySelector('.custom-file-label');
+        const imgPreview = document.querySelector('.img-preview');
 
+        labelImg.textContent = img.files[0].name;
+
+        const fileImg = new FileReader();
+        fileImg.readAsDataURL(sampull.files[0]);
+
+        fileImg.onload = function(e){
+            imgPreview.src = e.target.result;
+        }
+    }
+    </script>
 
 </body>
 

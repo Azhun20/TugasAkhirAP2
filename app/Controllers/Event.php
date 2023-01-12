@@ -77,16 +77,24 @@ class Event extends BaseController
         return view('addevent');
        
     }
-    public function editEvent($id) {
-        $event = new EventModel();
-        $detail['edit'] = $event->find($id);
+    public function editEvent($id_user) {
+        $event = new \App\Models\EventModel();
+        $detail['edit'] = $event->getID($id_user);
         return view('editevent', $detail);
     }
-    public function update($id){
+    public function update($id_event){
         $eventModel = new \App\Models\EventModel();
         $newbukti = $this->request->getFile("gambar");
-        $bukti = $newbukti->getRandomName(); 
-        $result = $eventModel->update($id,[
+        //cek gambar
+        if ($newbukti->getError()==4){
+            $bukti = $this->request->getVar('gambarLama');
+        } else{
+            $bukti = $newbukti->getRandomName(); 
+            $newbukti->move('Asset/img',$bukti);
+            unlink('Asset/img/' . $this->request->getVar('gambarLama'));
+        }
+
+        $result = $eventModel->update($id_event,[
             'Kota'=>$this->request->getPost("kota"),
             'nm_event'=>$this->request->getPost("nmevent"),
             'deskripsi'=>$this->request->getPost("desc"),
@@ -96,7 +104,6 @@ class Event extends BaseController
             'gambar'=>$bukti,
          ]);
          if($result !== false) {
-            $newbukti->move('Asset/img',$bukti);
             return view('event');
          } else {
             return redirect()->back()->with('errors', $eventModel->errors());

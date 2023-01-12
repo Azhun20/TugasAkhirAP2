@@ -84,6 +84,58 @@
     </div>
   </div>
 
+  <!-- footer -->
+  <footer class="footer text-white pt-5 pb-4 bg-dark">
+        <div class="container text-md-left">
+            <div class="row text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <img src="<?= base_url('Asset/img/icon.png') ?>" alt="">
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Perusahaan</h5>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration:none">STIKI Malang</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration:none">Jagoan Hosting</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration:none">Midtrans</a></a>
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 text-info">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">Product By</h5>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration:none">Bootstrap 5</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration:none">CodeIgniter 4</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration:none">Midtrans</a></a>
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> Malang, Jawa Timur, Indonesia
+                    </p>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> @aziiss___
+                    </p>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> @_argac
+                    </p>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-md-7 col-lg-8">
+                        <p>Copyright 2022 All right reserved by:<a href="" style="text-decoration: none;"><strong class="text-info"> STIKI Malang</strong></a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   
