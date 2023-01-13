@@ -48,6 +48,7 @@
           <div class="card-body p-sm-5">    
           
                 <form method="post" action="/booking/filter/<?=$info[0]['id_dtl']?>">
+                <input type="hidden" name="idlap" id="" value="<?=$info[0]['id_lap']?>">
                 <input for="" type="hidden" value="<?=$info[0]['id_dtl']?>" name="idlama">
                 <input for="" type="hidden" value="<?=$info[0]['tanggal']?>" name="date">
                 <label for="exampleFormControlInput1"  class="form-label">Tanggal</label>
@@ -60,7 +61,10 @@
                     </div>
                     </div>
                 </form>        
-            <form method="post" action="">
+            <form method="post" action="<?=base_url();?>/booking/process">
+            <input type="hidden" name="idlap" id="" value="<?=$info[0]['id_lap']?>">
+                <input for="" type="hidden" value="<?=$info[0]['id_dtl']?>" name="idlama">
+            <input type="hidden" name="tgl" id="tgl" value="<?=$info[0]['tanggal']?>">
                 <div class="row g-3 mb-3">
                     <div class="col">
                         <label for="">Pilih Jam</label>
@@ -89,7 +93,7 @@
                                 <?php
                                 else:
                                 ?>
-                                <input type="checkbox" class="checkbox">
+                                <input type="checkbox" class="checkbox" name="idjam" value="<?=$idJamMaster?>">
                                 <?php
                                 endif
                                 ?>
@@ -120,7 +124,7 @@
                         </div>
                         </div>
                     <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Buat</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Booking</button>
               </div> 
               <hr class="my-1">
             </form>

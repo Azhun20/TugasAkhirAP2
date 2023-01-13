@@ -10,11 +10,9 @@ class BookingModel extends Model
     protected $primaryKey = "idbooking";
     protected $returnType = "object";
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_lap','id_dtl', 'id', 'mulai','tanggal','selesai'];
+    protected $allowedFields = ['id_lap','id_dtl', 'id','tanggal','id_jam'];
     protected $validationRules = [
-        'mulai' => 'required',
         'tanggal' => 'required',
-        'selesai' => 'required',
         ];
         public function getData($id_dtl)
         {

@@ -47,19 +47,19 @@
                     </div>
                     <div class="row my-3">
                         <div class="col">
-                            <img src="Asset/img/bg2.jpg" class="card1 mx-3" alt="">
+                            <img src="Asset/img/bg6.jpg" class="card1 mx-3" alt="">
                             <p>GOR</p>
                         </div>
                         <div class="col">
-                            <img src="Asset/img/bg2.jpg" class="card1 mx-3" alt="">
+                            <img src="Asset/img/bg4.jpg" class="card1 mx-3" alt="">
                             <p>Lapangan Futsal</p>
                         </div>
                         <div class="col">
-                            <img src="Asset/img/bg2.jpg" class="card1 mx-3" alt="">
+                            <img src="Asset/img/bg3.jpg" class="card1 mx-3" alt="">
                             <p>Lapangan Syntetic</p>
                         </div>
                         <div class="col">
-                            <img src="Asset/img/bg2.jpg" class="card1 mx-3" alt="">
+                            <img src="Asset/img/bg5.jpg" class="card1 mx-3" alt="">
                             <p>Lapangan Vinyl</p>
                         </div>
                         <div class="col">

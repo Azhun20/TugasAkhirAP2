@@ -47,6 +47,7 @@
         <div class="card border-0 shadow rounded-3 ">
           <div class="card-body p-sm-5">    
                 <form method="post" action="/booking/filter/<?=$idlama?>">
+                <input type="hidden" name="idlap" id="" value="<?=$idlap?>">
                 <input for="" type="hidden" value="<?=$idlama?>" name="idlama">
                 <input for="" type="hidden" value="<?=$date?>" name="date">
                 <label for="exampleFormControlInput1"  class="form-label">Tanggal</label>
@@ -59,7 +60,10 @@
                     </div>
                     </div>
                 </form>        
-            <form method="post" action="">
+            <form method="post" action="<?=base_url();?>/booking/process">
+            <input type="hidden" name="tgl" id="tgl" value="<?=$date?>">
+            <input type="hidden" name="idlap" id="" value="<?=$idlap?>">
+                <input for="" type="hidden" value="<?=$idlama?>" name="idlama">
                 <div class="row g-3 mb-3">
                     <div class="col">
                         <label for="">Pilih Jam</label>
@@ -68,7 +72,7 @@
                         <?php 
                             foreach($jam as $row) :?>
                             <label class="option_item">  
-                            <input type="checkbox" class="checkbox">
+                            <input type="checkbox" class="checkbox" name="idjam" value="<?=$row['id_jam']?>">
                             <div class="option_inner">
                                 <div class="tickmark"></div>
                                 <div class="icon">
@@ -84,7 +88,7 @@
                         </div>
                         </div>
                     <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Buat</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Booking</button>
               </div> 
               <hr class="my-1">
             </form>
