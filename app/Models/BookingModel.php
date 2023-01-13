@@ -23,6 +23,17 @@ class BookingModel extends Model
              ->join('dtl_lap','dtl_lap.id_dtl=booking.id_dtl')
              ->join('masterjam','masterjam.id_jam = booking.id_jam')
              ->where('dtl_lap.id_dtl',$id_dtl)
+             ->where("booking.tanggal ='2022-12-29'")
+             ->get()->getResultArray();  
+        }
+        public function getTgl($id_dtl,$date)
+        {
+             return $this->db->table('booking')
+             ->select('*')
+             ->join('dtl_lap','dtl_lap.id_dtl=booking.id_dtl')
+             ->join('masterjam','masterjam.id_jam = booking.id_jam')
+             ->where('dtl_lap.id_dtl',$id_dtl)
+             ->where('booking.tanggal',$date)
              ->get()->getResultArray();  
         }
         public function getJam(){

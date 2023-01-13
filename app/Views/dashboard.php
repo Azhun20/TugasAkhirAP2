@@ -101,6 +101,25 @@
         </div>
     </div>
 
+  <!-- Modal -->
+  <?php if (session()->has('info')): ?>
+    <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLabel">INFO</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <?= (session('info')) ?>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <?php endif ?>
     <!-- footer -->
     <footer class="footer text-white pt-5 pb-4 bg-dark">
         <div class="container text-md-left">
@@ -155,7 +174,14 @@
 
     <!-- Java Script -->
     <script src="<?= base_url('js/style.js') ?>"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+       $(document).ready(function(){
+             $("#modalInfo").modal('show');
+         });
+        
+    </script>
 </body>
 
 </html>

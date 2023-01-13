@@ -31,4 +31,10 @@ class EventModel extends Model
          ->where('event.id',$id_user)
          ->get()->getResultArray();  
     }
+        public function getView()
+    {
+         return $this->db->table('event')
+         ->where('event.status = 1')
+         ->get()->getResult();  
+    }
 }

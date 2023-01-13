@@ -104,7 +104,7 @@ class Event extends BaseController
             'gambar'=>$bukti,
          ]);
          if($result !== false) {
-            return view('event');
+            return view('event')->with('info', 'Berhasil Update Event');
          } else {
             return redirect()->back()->with('errors', $eventModel->errors());
          }

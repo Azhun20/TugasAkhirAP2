@@ -25,7 +25,7 @@
                 <div class="navbar-nav mx-auto">
                     <a class="nav-link mx-2" href="<?= base_url('homepage') ?>">Home</a>
                     <a class="nav-link mx-2" aria-current="page" href="<?= base_url('premium') ?>">Premium</a>
-                    <a class="nav-link mx-2" href="<?= base_url('event') ?>">Event</a>
+                    <a class="nav-link mx-2 active" href="<?= base_url('event') ?>">Event</a>
                 </div>
                 <div class="me-3">
                         <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger btn">Logout</button></form>
@@ -58,12 +58,12 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Event</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" required><?=$edit[0]['deskripsi']?></textarea>
                 </div>
+                <label class="custom-file-label" for="gambar">Pilih gambar</label>
                 <div class="mb-3">
                     <img src="/Asset/img/<?=$edit[0]['gambar']?>" class="img-preview" alt="">
                 <div class="col-sm-8">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="gambar" name="gambar">
-                        <label class="custom-file-label" for="gambar">Pilih gambar...</label>
                     </div>
                 </div>
                 </div>
@@ -118,6 +118,26 @@
       </div>
       </div>
         </div>
+          <!-- Modal -->
+      <?php if (session()->get('premium') != 1): ?>
+    <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header ">
+            <h3 class="modal-title text-center text-warning" id="exampleModalLabel">INFO!!</h1>
+        </div>
+        <div class="modal-body">
+        <h3 class="">Premium Untuk Akses Halaman</h3>
+        </div>
+        <form action="<?= base_url(); ?>/premium">
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <?php endif ?>
     </section>
 
     <!-- footer -->
@@ -175,7 +195,13 @@
     <!-- Java Script -->
     <script src="<?= base_url('js/style.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script>
+       $(document).ready(function(){
+             $("#modalInfo").modal('show');
+         });
+        
+    </script>
     <script> 
     function previewImg(){
         const img = document.querySelector('#gambar');

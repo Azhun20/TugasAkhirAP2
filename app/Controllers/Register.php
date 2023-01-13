@@ -60,6 +60,24 @@ class Register extends BaseController
             'email' => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
         ]);
+        $eventModel = new \App\Models\EventModel();
+        $gambar = "";
+        $kota = "";
+        $deskripsi = "";
+        $alamat = "";
+        $tglmulai = "";
+        $nmevent = "";
+        $tglselesai = "";
+        $result = $eventModel->insert([
+            'Kota'=>$kota,
+            'nm_event'=>$nmevent,
+            'deskripsi'=>$deskripsi,
+            'alamat'=>$alamat,
+            'tgl_mulai'=>$tglmulai,
+            'tgl_selesai'=>$tglselesai,
+            'gambar'=>$gambar,
+            'id'=>$users['id']
+         ]);
         return redirect()->to('/login');
     }
 }

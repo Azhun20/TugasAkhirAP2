@@ -46,17 +46,14 @@
                     <p class="text-light"><?=$info[0]['Alamat']?></p>
                 </div>
             </div>
-            <div class="row mt-5">
-            <?php
-           
+            <div class="row mt-2">
+            <?php         
                 foreach ($info as $row) :
                     $nama = $row['No_lap'];
                     $ukuran = $row['size'];
                     $price = $row['harga'];
-                    $img = $row['gambar'];
-                
+                    $img = $row['gambar'];  
             ?>
-            
                 <div class="col-md-4 text-center">
                     <div class="card-layanan">
                     <h3><?=$nama ?></h3>

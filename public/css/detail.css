@@ -37,6 +37,7 @@ body {
   position: relative;
   height: 100vh;
 }
+
 .gambar1 {
   filter: brightness(40%);
   width: 100%;

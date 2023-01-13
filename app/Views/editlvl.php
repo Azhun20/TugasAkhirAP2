@@ -38,8 +38,43 @@
                     <label for="exampleFormControlInput1" class="form-label">Email</label>
                     <input class="form-control" type="text" value="<?= $edit->email; ?>" aria-label="readonly input example" readonly>                    
                 </div>
-            
                 <div class="mb-3">
+                    <div class="col">
+                    <label for="">Premium</label>
+                    </div>
+                    
+                    <?php if($edit->premium == null): ?>
+                        <div class="form-check form-check-inline">
+                         <input type="radio" name="premium" value="0">
+                         <label class="form-check-label">
+                             Premium
+                         </label>
+                        <div class="form-check form-check-inline">
+                         <input type="radio" name="premium" value="0" checked >
+                         <label class="form-check-label">
+                             Non-premium
+                         </label>
+                        </div>    
+                    <?php else:?>
+                        <div class="form-check form-check-inline">
+                         <input type="radio" name="premium" value="1" checked>
+                         <label class="form-check-label">
+                             Premium
+                         </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                         <input type="radio" name="premium" value="0">
+                         <label class="form-check-label">
+                             Non-premium
+                         </label>
+                        </div>    
+                    <?php endif ?>
+                    </div>
+
+                <div class="mb-3">
+                <div class="col">
+                    <label for="">Level</label>
+                    </div>
                     <?php
                     if($edit->level == "admin") {
                     ?>
@@ -132,11 +167,8 @@
                      </div>
                      <?php
                     }
-                    
                     ?>
-                                     
-                </div>
-
+                    </div>
                 <button class="btn btn-primary" >Save</button>
                 <a href="<?= site_url("/admin") ?>">Cancel</a>
 

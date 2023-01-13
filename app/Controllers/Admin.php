@@ -29,7 +29,8 @@ class Admin extends BaseController
         $admin = new UsersModel();
         
         $result = $admin->update($id,[
-           'level'=>$this->request->getPost("level")
+           'level'=>$this->request->getPost("level"),
+           'premium'=>$this->request->getPost("premium")
         ]);
   
         if($result==true) {

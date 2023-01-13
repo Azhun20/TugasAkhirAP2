@@ -46,14 +46,13 @@
             <div class="col-sm-12 col-md-12 col-lg-9 my-auto mx-auto mt-2 text-dark">
         <div class="card border-0 shadow rounded-3 ">
           <div class="card-body p-sm-5">    
-          
-                <form method="post" action="/booking/filter/<?=$info[0]['id_dtl']?>">
-                <input for="" type="hidden" value="<?=$info[0]['id_dtl']?>" name="idlama">
-                <input for="" type="hidden" value="<?=$info[0]['tanggal']?>" name="date">
+                <form method="post" action="/booking/filter/<?=$idlama?>">
+                <input for="" type="hidden" value="<?=$idlama?>" name="idlama">
+                <input for="" type="hidden" value="<?=$date?>" name="date">
                 <label for="exampleFormControlInput1"  class="form-label">Tanggal</label>
                 <div class="row g-3 ">  
                     <div class="col">
-                <input type="date" class="form-control" value="<?=$info[0]['tanggal']?>" id="exampleFormControlInput1" name="tgl">
+                <input type="date" class="form-control" value="<?=$date?>" id="exampleFormControlInput1" name="tgl">
                     </div>
                     <div class="col">
                     <button class="btn btn-primary" >Filter</button>
@@ -66,33 +65,10 @@
                         <label for="">Pilih Jam</label>
                     <div class="wrapper">
                         <div class="container cn1">
-
-                        <?php  
-                            foreach ($isi as $row) :
-                                $status = "Avaible";  
-                                $idJamMaster = $row['id_jam'];
-                                $masterJam = $row['jam'];
-                                foreach ($info as $row) :
-                                    $idJamBooking = $row['id_jam'];
-                                    $tgl = $row['tanggal'];
-                                    if($idJamBooking == $idJamMaster):
-                                        $status = "Not Avaible";
-                                    endif;
-                                endforeach;
-                        ?>
-                            <label class="option_item">
-                                
-                            <?php
-                                if($status == "Not Avaible"):
-                                ?>
-                                <input type="checkbox" class="checkbox" disabled>
-                                <?php
-                                else:
-                                ?>
-                                <input type="checkbox" class="checkbox">
-                                <?php
-                                endif
-                                ?>
+                        <?php 
+                            foreach($jam as $row) :?>
+                            <label class="option_item">  
+                            <input type="checkbox" class="checkbox">
                             <div class="option_inner">
                                 <div class="tickmark"></div>
                                 <div class="icon">
@@ -100,23 +76,11 @@
                                                             <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z" />
                                     </svg>
                                 </div>
-                                <p class="mb-2"><?=$masterJam?></p>
-                                <?php
-                                if($status == "Not Avaible"):
-                                ?>
-                                <div class="name text-danger">Not Available</div>
-                                <?php
-                                else:
-                                ?>
+                                <p class="mb-2"><?=$row['jam']?></p>
                                 <div class="name">Available</div>
-                        <?php
-                            endif;
-                            ?>
                             </div>
-                        </label>
-                        <?php
-                            endforeach
-                        ?>
+                            </label>
+                            <?php endforeach ?>
                         </div>
                         </div>
                     <div class="d-grid">

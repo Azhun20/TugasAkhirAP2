@@ -38,41 +38,11 @@ class Premium extends BaseController
          ]);
          if($result !== false) {
             $newbukti->move('Asset/img/upload',$bukti);
-            return redirect()->to('/premium');
+            return redirect()->to('/premium')
+                                ->with('info', 'Berhasil kirim, Tunggu konfirmasi Admin');
          } else {
             return redirect()->back()->with('errors', $bayarModel->errors());
          }
-    }
-    public function upload(){
-        $config['upload_path']         = '/Asset/img/upload/';  // folder upload 
-       $config['allowed_types']        = 'gif|jpg|png|jpeg|webp'; // jenis file
-       $config['max_size']             = 3000;
-       $config['max_width']            = 1024;
-       $config['max_height']           = 768;
-
-       $this->load->library('upload', $config);
-
-       if ( ! $this->upload->do_upload('gambar')) //sesuai dengan name pada form 
-       {
-              echo 'anda gagal upload';
-       }
-       else
-       {
-           //tampung data dari form
-           $nama = $this->input->post('jenis');
-           $harga = $this->input->post('total');
-           $metode = $this->input->post('level');
-           $file = $this->upload->data();
-           $gambar = $file['file_name'];
-
-           $this->BayarModel->insert(array(
-               'jenispembayaran' => $nama,
-               'jml_bayar' => $harga,
-               'metodeBayar' => $metode,
-               'Bukti' => $gambar
-           ));
-           redirect('premium');
-
-       }
+   
    }
 }
