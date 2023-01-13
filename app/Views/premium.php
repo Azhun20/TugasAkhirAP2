@@ -30,7 +30,10 @@
                 </div>
                 <div class="me-3">
                         <form action="<?= base_url('/logout') ?>"><button type="submit" class="btn-danger">Logout</button></form>
-                    </div>
+                </div>
+                
+                <form action="http://localhost:8080/event/editevent/<?=session()->get('id_user')?>"><button type="submit" class="btn-primary">My Event</button></form>
+            
             </div>
         </div>
     </nav>
